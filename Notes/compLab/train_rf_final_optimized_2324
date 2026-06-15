@@ -1,0 +1,20 @@
+Berhasil memuat 856,800 baris dan 9 kolom.
+Mengevaluasi Akurasi Model Tahun 2024
+=== HASIL EVALUASI GLOBAL ===
+MAE Global                     : 18.19 penumpang
+RMSE Global                    : 42.70 penumpang
+Error Relatif (WMAPE)          : 17.06%
+MAPE Global (Scikit-Learn)     : 87.27%
+
+=== BEDAH KINERJA MODEL (MEMATAHKAN ILUSI MAPE) ===
+Membuktikan model AI sangat akurat di jam krusial, dan error % besar hanya terjadi pada jam sepi yang tidak signifikan secara operasional:
+
+1. Jam Sibuk (> 50 Penumpang)
+      MAPE = 18.43%  |  WMAPE = 15.33%  (Total Data: 340,149 baris)
+
+2. Jam Normal (11 - 50 Penumpang)
+      MAPE = 34.86%  (Total Data: 122,586 baris)
+
+3. Jam Sepi (1 - 10 Penumpang)
+      MAPE = 604.86% (Total Data: 57,652 baris)
+====================================================

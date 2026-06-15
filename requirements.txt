@@ -1,0 +1,33 @@
+pandas
+numpy
+scikit-learn
+joblib
+
+
+#  library utama:
+#
+#   1.  pandas  (untuk manipulasi data)
+#   2.  numpy  (untuk komputasi numerik)
+#   3.  scikit-learn  (untuk pembuatan model ML)
+#   4.  joblib  (untuk menyimpan model)
+#
+#   ### Panduan Setup Pertama Kali
+#
+#
+#   1. (Opsional) Buat Virtual Environment
+#
+#     python -m venv venv
+#
+#   2. Aktifkan Virtual Environment
+#
+#   • Di Windows (PowerShell/CMD):
+#     .\venv\Scripts\activate
+#
+#   • Di Mac/Linux:
+#     source venv/bin/activate
+#
+#   3. Install Semua Library Sekaligus
+#   Karena kita sudah memiliki file  requirements.txt, jalankan ini:
+#
+#     pip install -r requirements.txt
+
