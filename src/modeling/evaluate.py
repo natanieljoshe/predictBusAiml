@@ -8,7 +8,7 @@ def evaluate_model(predictions, y_test):
     y_test_array = np.array(y_test)
     pred_array = np.array(predictions)
     
-    # EVALUASI GLOBAL (Menyeluruh)
+    # evaluasi global (Menyeluruh)
     mae = mean_absolute_error(y_test_array, pred_array)
     rmse = np.sqrt(mean_squared_error(y_test_array, pred_array))
     rata_rata_penumpang = y_test_array.mean()
@@ -17,7 +17,7 @@ def evaluate_model(predictions, y_test):
     mask_global = y_test_array > 0
     mape_global = mean_absolute_percentage_error(y_test_array[mask_global], pred_array[mask_global]) * 100
     
-    # EVALUASI TERPISAH
+    # evaluasi terpisah
     # A. Jam Sibuk (Aktual > 50 penumpang)
     mask_peak = y_test_array > 50
     mape_peak = mean_absolute_percentage_error(y_test_array[mask_peak], pred_array[mask_peak]) * 100
@@ -37,7 +37,6 @@ def evaluate_model(predictions, y_test):
     print(f"Error Relatif (WMAPE)          : {wmape_percentage:.2f}%")
     print(f"MAPE Global (Scikit-Learn)     : {mape_global:.2f}%\n")
 
-    print("=== BEDAH KINERJA MODEL (MEMATAHKAN ILUSI MAPE) ===")
     print("Membuktikan model AI sangat akurat di jam krusial, dan error % besar hanya terjadi pada jam sepi yang tidak signifikan secara operasional:\n")
     print(f"      1. Jam Sibuk (> 50 Penumpang)")
     print(f"      MAPE = {mape_peak:.2f}%  |  WMAPE = {wmape_peak:.2f}%  (Total Data: {mask_peak.sum():,} baris)")

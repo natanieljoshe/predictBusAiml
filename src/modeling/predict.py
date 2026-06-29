@@ -52,11 +52,10 @@ def predict_demand(route_name, hour, day_of_week, month, is_holiday):
     # Eksekusi Prediksi
     predicted_val = model.predict(input_df)[0]
     
-    # Penawar Log-Transform (Expm1)
     if is_log_transformed:
         predicted_val = np.expm1(predicted_val)
     
-    # Pastikan tidak ada jumlah penumpang minus atau desimal (orang tidak bisa dipecah)
+    # Memastikan tidak ada jumlah penumpang minus atau desimal (orang tidak bisa dipecah)
     return max(0, int(round(predicted_val)))
 
 if __name__ == "__main__":

@@ -31,11 +31,11 @@ def run_final_training():
     X_test = test_df[FEATURES]
     y_test = test_df[TARGET]
 
-    # LOGARITHMIC TRANSFORMATION
+    # logarithmic transformation
     print("Menerapkan transformasi Logaritmik (np.log1p) pada data target...")
     y_train_log = np.log1p(y_train)
 
-    # Memasukkan Hyperparameter Pemenang dari Eksperimen Sebelumnya
+    # Memasukkan Hyperparameter winner dari Eksperimen Sebelumnya
     best_params = {
         'n_estimators': 300,
         'max_depth': 30,

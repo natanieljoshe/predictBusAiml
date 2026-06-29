@@ -6,7 +6,6 @@ RMSE Global                    : 42.70 penumpang
 Error Relatif (WMAPE)          : 17.06%
 MAPE Global (Scikit-Learn)     : 87.27%
 
-=== BEDAH KINERJA MODEL (MEMATAHKAN ILUSI MAPE) ===
 Membuktikan model AI sangat akurat di jam krusial, dan error % besar hanya terjadi pada jam sepi yang tidak signifikan secara operasional:
 
 1. Jam Sibuk (> 50 Penumpang)

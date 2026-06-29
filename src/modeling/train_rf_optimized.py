@@ -10,7 +10,7 @@ from src.preprocessing.feature_engineering import target_encode_routes
 from src.modeling.evaluate import evaluate_model
 
 def run_optimization():
-    print("MEMULAI PROSES HYPERPARAMETER TUNING (MENCARI SETTING OVEN TERBAIK) 🚀\n")
+    print("MEMULAI PROSES HYPERPARAMETER TUNING\n")
 
     # Load & Siapkan Bahan
     train_df = load_raw_data(TRAIN_DATA_PATH)
@@ -24,20 +24,19 @@ def run_optimization():
     X_test = test_df[FEATURES]
     y_test = test_df[TARGET]
 
-    # Tentukan Rentang Eksperimen (Oven Settings Options)
+    # Tentukan Rentang Eksperimen 
     param_distributions = {
-        'n_estimators': [100, 200, 300],          # Berapa banyak pohon yang ditanam?
-        'max_depth': [10, 20, 30, None],          # Seberapa dalam pohon boleh bercabang? (Mencegah over-menghafal)
-        'min_samples_split': [2, 5, 10],          # Minimal bahan untuk memecah cabang baru
-        'min_samples_leaf': [1, 2, 4]             # Minimal bahan yang tersisa di ujung daun
+        'n_estimators': [100, 200, 300],          
+        'max_depth': [10, 20, 30, None],          
+        'min_samples_split': [2, 5, 10],          
+        'min_samples_leaf': [1, 2, 4]             
     }
 
     print("\n Rentang Hyperparameter yang akan diuji:")
     for key, val in param_distributions.items():
         print(f"   - {key}: {val}")
 
-    # Setup TimeSeriesSplit untuk Validasi
-    # Pakai TimeSeriesSplit agar saat proses Tuning, 
+    # TimeSeriesSplit agar saat proses Tuning, 
     # model tidak mengalami data leakage (tetap urut waktu).
     tscv = TimeSeriesSplit(n_splits=3)
 
@@ -46,15 +45,15 @@ def run_optimization():
     rf_tuner = RandomizedSearchCV(
         estimator=rf_base,
         param_distributions=param_distributions,
-        n_iter=10,               # Coba 10 kombinasi berbeda
-        cv=tscv,                 # Gunakan pemisahan waktu
-        scoring='neg_mean_absolute_error', # Cari MAE yang paling kecil
-        verbose=2,               # Tampilkan prosesnya di layar
+        n_iter=10,               # 10 kombinasi berbeda
+        cv=tscv,                 # pemisahan waktu
+        scoring='neg_mean_absolute_error', # MAE yang paling kecil
+        verbose=2,               
         random_state=42,
-        n_jobs=-1                # Eksekusi secara paralel
+        n_jobs=-1                
     )
 
-    # Mulai Eksperimen 
+     
     print("\n Memulai pencarian kombinasi terbaik (Ini akan memakan waktu beberapa menit)...")
     rf_tuner.fit(X_train, y_train)
 
