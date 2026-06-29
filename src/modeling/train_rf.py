@@ -9,9 +9,6 @@ from src.preprocessing.feature_engineering import target_encode_routes
 from src.modeling.evaluate import evaluate_model
 
 def run_training():
-    print("MEMULAI PROSES PEMBUATAN MODEL AI 🍳\n")
-
-    # Ambil bahan mentah dari gudang
     train_df = load_raw_data(TRAIN_DATA_PATH)
     test_df = load_raw_data(TEST_DATA_PATH)
     if train_df is None or test_df is None:
@@ -21,7 +18,7 @@ def run_training():
     train_df.to_csv(PROCESSED_DATA_PATH, index=False)
     print(f"Salinan data bersih disimpan di folder processed.")
     
-    # Target Encoding (AI belajar bobot rute HANYA dari data masa lalu)
+    # Target Encoding
     train_df, test_df, route_target_mean = target_encode_routes(train_df, test_df)
     
     # Siapkan Fitur dan Target
@@ -31,7 +28,7 @@ def run_training():
     X_test = test_df[FEATURES]
     y_test = test_df[TARGET]
     
-    # Masukkan ke Oven (Training Model)
+    # Training Model
     print("\n Memulai proses training Random Forest...")
     rf_model = RandomForestRegressor(**RF_PARAMS)
     rf_model.fit(X_train, y_train)
