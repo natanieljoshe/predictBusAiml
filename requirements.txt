@@ -2,7 +2,9 @@ pandas
 numpy
 scikit-learn
 joblib
-
+matplotlib
+seaborn
+ipykernel
 
 #  library utama:
 #
@@ -10,6 +12,8 @@ joblib
 #   2.  numpy  (untuk komputasi numerik)
 #   3.  scikit-learn  (untuk pembuatan model ML)
 #   4.  joblib  (untuk menyimpan model)
+#   5.  matplotlib & seaborn (untuk visualisasi grafik / EDA)
+#   6.  ipykernel (untuk menjalankan Jupyter Notebook)
 #
 #   ### Panduan Setup Pertama Kali
 #
@@ -30,4 +34,3 @@ joblib
 #   Karena kita sudah memiliki file  requirements.txt, jalankan ini:
 #
 #     pip install -r requirements.txt
-
